@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Al's slides</title>
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript">
+			window.app = angular
+				.module("TechEdSlides", [])
+				.controller("MainController", function($scope) {
+					$scope.pageNumber = 1;
+
+					$scope.next = function() {
+						$scope.pageNumber++;
+					};
+
+					$scope.previous = function() {
+						if($scope.pageNumber > 1) {
+							$scope.pageNumber--;
+						}
+					};
+				});
+		</script>
+	</head>
+	<body data-ng-app="TechEdSlides">
+		<div data-ng-controller="MainController">
+			<h1>Al's Tech Ed slides {{pageNumber}}</h1>
+
+			<div data-ng-show="pageNumber == 1">Page 1</div>
+			<div data-ng-show="pageNumber == 2">Page 2</div>
+			<div data-ng-show="pageNumber == 3">Page 3</div>
+			<div data-ng-show="pageNumber == 4">Page 4</div>
+
+			<span data-ng-click="previous()">Previous</span>
+			<span data-ng-click="next()">Next</span>
+		</div>
+	</body>
+</html>
