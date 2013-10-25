@@ -17,14 +17,44 @@
 							$scope.pageNumber--;
 						}
 					};
-				});
+					
+					$scope.keyPressed = function(e) {
+						//console.log("Got key: ", e.which);
+						if(e.which === 110) {
+							$scope.next();
+						}
+						if(e.which === 112) {
+							$scope.previous();
+						}
+					}
+				})
+				.directive("keyPressEvents", ["$document", "$rootScope", function($document, $rootScope) {
+					return {
+						restrict: 'A',
+						scope: true,
+						link: function(scope, elem, attrs) {
+							$document.bind("keypress", function(e) {
+								scope.$apply(scope.keyPressed(e));
+							});
+						}
+					}
+				}]);
 		</script>
 	</head>
 	<body data-ng-app="TechEdSlides">
-		<div data-ng-controller="MainController">
+		<div data-ng-controller="MainController" key-press-events="keyPressed">
 			<h1>Al's Tech Ed slides {{pageNumber}}</h1>
 
-			<div data-ng-show="pageNumber == 1">Page 1</div>
+			<div data-ng-show="pageNumber == 1">
+            	<h2>Hack-Ed sessions</h2>
+                <p>Presented by Kirk Jackson and Andy Prow over a couple of sessions</p>
+                <ul>
+                    <li>Hack-Ed: Wheedling and Cajoling your way to Success (ATC232)</li>
+                    <li>Hack-Ed: Develop your Security Spidey Sense (ATC233)</li>
+                </ul>
+                <p><a href="http://channel9.msdn.com/Events/TechEd/Australia/2013?sort=sequential&direction=desc&term=security&s=Andy-Prow#theSessions">Videos on channel9</a></p>
+            </div>
+            
 			<div data-ng-show="pageNumber == 2">Page 2</div>
 			<div data-ng-show="pageNumber == 3">Page 3</div>
 			<div data-ng-show="pageNumber == 4">Page 4</div>
