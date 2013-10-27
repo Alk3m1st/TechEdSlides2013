@@ -1,6 +1,10 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Al's slides</title>
+		<!-- Please note this is a terrible way to construct an Angular JS app, but a quick way to get some slides going in a browser :) -->
+		<link rel="stylesheet" href="css/normalize.css" />
+		<link rel="stylesheet" href="css/foundation.min.css" />
 		<script type="text/javascript" src="angular.min.js"></script>
 		<script type="text/javascript">
 			window.app = angular
@@ -42,25 +46,204 @@
 		</script>
 	</head>
 	<body data-ng-app="TechEdSlides">
+		<nav class="top-bar">
+			<ul class="title-area">
+				<li class="name">
+					<h1><a href="#">Al's Tech Ed slides</a></h1>
+				</li>
+			</ul>
+		</nav>
 		<div data-ng-controller="MainController" key-press-events="keyPressed">
-			<h1>Al's Tech Ed slides {{pageNumber}}</h1>
+			<div class="row">
+				<div class="large-12 columns">
+					<div data-ng-show="pageNumber == 1">
+		            	<h2>Hack-Ed sessions</h2>
+		                <p>Presented by Kirk Jackson and Andy Prow over a couple of sessions</p>
+		                <ul>
+		                    <li>Hack-Ed: Wheedling and Cajoling your way to Success (ATC232)</li>
+		                    <li>Hack-Ed: Develop your Security Spidey Sense (ATC233)</li>
+		                </ul>
+		                <p><a href="http://channel9.msdn.com/Events/TechEd/Australia/2013?sort=sequential&direction=desc&term=security&s=Andy-Prow#theSessions">Videos on channel9</a></p>
+		                <p><a href="https://github.com/Alk3m1st/TechEdSlides2013">These slides on Als github</a></p>
+		            </div>
+		            
+					<div data-ng-show="pageNumber == 2 || pageNumber == 3">
+						<h2>Hack-Ed sessions</h2>
+						<h3>High profile attacks</h3>
+						<p>Linked In</p>
+						<p>Yahoo Voices</p>
+						<p>First State Super</p>
+						<p>Aus Post</p>
+						<p>ATO</p>
+						<p>ABC</p>
+						<p>Tech Ed NZ registration site</p>
+						<p>Finally, one of the most effective attacks only needed 71 characters...<span data-ng-show="pageNumber == 3">it was a tweet from a hacked Associated Press twitter account that described two explosions in the white house and obama injured. Knocked 136 Billion USD off the DOW in just an hour.</span></p>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 4">
+						<h2>Hack-Ed sessions</h2>
+						<h3>Attack type examples</h3>
+						<p>Search defacement</p>
+						<p>3DoS</p>
+						<p>SQL injection</p>
+						<p>Session hijacking</p>
+						<p>XSS (Cross-site scripting)</p>
+						<p>CSRF (Cross-site request forgery)</p>
+						<p>Click-jacking</p>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 5 || pageNumber == 6 || pageNumber == 7">
+						<h2>Hack-Ed sessions</h2>
+						<h3>DoS - Parsing attacks</h3>
+						<p data-ng-show="pageNumber == 6 || pageNumber == 7">XML - <a href="http://en.wikipedia.org/wiki/Billion_laughs">Billion laughs</a> or XML bomb</p>
+<div class="panel" data-ng-show="pageNumber == 7">
+<pre class="de1">
+<span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">"1.0"</span><span class="re2">?&gt;</span></span>
+<span class="sc0">&lt;!DOCTYPE lolz [</span>
+<span class="sc0"> &lt;!ENTITY lol "lol"&gt;</span>
+ <span class="sc3">&lt;!ELEMENT lolz <span class="br0">(</span>#PCDATA<span class="br0">)</span><span class="re2">&gt;</span></span>
+ <span class="sc3">&lt;!ENTITY lol1 <span class="st0">"&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;"</span><span class="re2">&gt;</span></span>
+ <span class="sc3">&lt;!ENTITY lol2 <span class="st0">"&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;&amp;lol1;"</span><span class="re2">&gt;</span></span>
+ <span class="sc3">&lt;!ENTITY lol3 <span class="st0">"&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;"</span><span class="re2">&gt;</span></span>
+ <span class="sc3">&lt;!ENTITY lol4 <span class="st0">"&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;"</span><span class="re2">&gt;</span></span>
+ <span class="sc3">&lt;!ENTITY lol5 <span class="st0">"&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;"</span><span class="re2">&gt;</span></span>
+ <span class="sc3">&lt;!ENTITY lol6 <span class="st0">"&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;"</span><span class="re2">&gt;</span></span>
+ <span class="sc3">&lt;!ENTITY lol7 <span class="st0">"&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;"</span><span class="re2">&gt;</span></span>
+ <span class="sc3">&lt;!ENTITY lol8 <span class="st0">"&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;"</span><span class="re2">&gt;</span></span>
+ <span class="sc3">&lt;!ENTITY lol9 <span class="st0">"&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;"</span><span class="re2">&gt;</span></span>
+]&gt;
+<span class="sc3"><span class="re1">&lt;lolz<span class="re2">&gt;</span></span></span><span class="sc1">&amp;lol9;</span><span class="sc3"><span class="re1">&lt;/lolz<span class="re2">&gt;</span></span></span>
+</pre>
+</div>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 8">
+						<h2>Hack-Ed sessions</h2>
+						<h3>DoS - Regex (ReDoS)</h3>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 9">
+						<h2>Hack-Ed sessions</h2>
+						<h3>DoS - Regex (ReDoS)</h3>
+						<table border="1">
+							<thead>
+								<tr><th>^\d+$</th><th>^\d+$</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><strong>123</strong></td><td><strong>123X</strong></td></tr>
+								<tr><td colspan="2">&nbsp;</td></tr>
+								<tr><td>1^23</td><td>1^23X</td></tr>
+								<tr><td>12^3</td><td>12^3X</td></tr>
+								<tr><td>123^</td><td>123^X</td></tr>
+								<tr><td></td><td>12^3X</td></tr>
+								<tr><td></td><td>1^23X</td></tr>
+							</tbody>
+						</table>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 10">
+						<h2>Hack-Ed sessions</h2>
+						<h3>DoS - Regex (ReDoS)</h3>
+						<table border="1">
+							<thead>
+								<tr><th>^\d+$</th><th>^\d+$</th><th>^(\d+)+$</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><strong>123</strong></td><td><strong>123X</strong></td><td><strong>123X</strong></td></tr>
+								<tr><td colspan="3">&nbsp;</td></tr>
+								<tr><td>1^23</td><td>1^23X</td><td>(1)^23X</td></tr>
+								<tr><td>12^3</td><td>12^3X</td><td>(12)^3X</td></tr>
+								<tr><td>123^</td><td>123^X</td><td>(123)^X</td></tr>
+								<tr><td></td><td>12^3X</td><td>(12)^3X</td></tr>
+								<tr><td></td><td>1^23X</td><td>(12)(3)^X</td></tr>
+								<tr><td></td><td></td><td>(12)^3X</td></tr>
+								<tr><td></td><td></td><td>(1)^23X</td></tr>
+								<tr><td></td><td></td><td>(1)(2)^3X</td></tr>
+								<tr><td></td><td></td><td>(1)(23)^X</td></tr>
+								<tr><td></td><td></td><td>(1)(2)^3X</td></tr>
+								<tr><td></td><td></td><td>...</td></tr>
+							</tbody>
+						</table>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 11 || pageNumber == 12">
+						<h2>Hack-Ed sessions</h2>
+						<h3>DoS - Regex (ReDoS)</h3>
+						<p>Basically beware of any regex with a grouping expression with repetition</p>
+						<p>e.g.		^(\d+)*$		^(\d*)*$		^(\d+|\s+)*$</p>
+						<p data-ng-show="pageNumber == 12">
+							^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@(([0-9a-zA-Z])+([-\w]*[0-9a-zA-Z])*\.)+[a-zA-Z]{2,9})$ <br />
+							Found on Regular Expression Library Web site (regexlib.com)
+						</p>
+						<p data-ng-show="pageNumber == 12">
+							Can test with a fuzzer <a href="http://msdn.microsoft.com/en-us/magazine/ff646973.aspx">http://msdn.microsoft.com/en-us/magazine/ff646973.aspx</a>
+						</p>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 13 || pageNumber == 14">
+						<h2>Hack-Ed sessions</h2>
+						<h3>Session Hijacking</h3>
+						<p data-ng-show="pageNumber == 14">Don't flip between HTTP/HTTPS</p>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 15 || pageNumber == 16">
+						<h2>Hack-Ed sessions</h2>
+						<h3>SQL Injection</h3>
+						<div data-ng-show="pageNumber == 16">
+							<p>Username: admin'--<br />
+							SELECT * FROM members WHERE username = 'admin'--' AND password = 'password'</p>
+							<p>; DROP members--</br />
+							SELECT * FROM members; DROP members--</p>
+							<p>\'; DESC users; -- (get past quote commenting out)</p>
+							<p>' UNION SELECT 1, 'anotheruser', 'doesnt matter', 1--</p>
+						</div>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 17">
+						<h2>Hack-Ed sessions</h2>
+						<h3>SQL Injection</h3>
+						<p><strong>Get user defined tables</strong><br />SELECT name FROM sysobjects WHERE xtype = 'U'</p>
+						<p><strong>Get Column Names</strong><br />SELECT name FROM syscolumns WHERE id =(SELECT id FROM sysobjects WHERE name = 'tablenameforcolumnnames')</p>
+						<p>EXEC master.dbo.xp_cmdshell 'cmd.exe dir c:' </p>
+					</div>
 
-			<div data-ng-show="pageNumber == 1">
-            	<h2>Hack-Ed sessions</h2>
-                <p>Presented by Kirk Jackson and Andy Prow over a couple of sessions</p>
-                <ul>
-                    <li>Hack-Ed: Wheedling and Cajoling your way to Success (ATC232)</li>
-                    <li>Hack-Ed: Develop your Security Spidey Sense (ATC233)</li>
-                </ul>
-                <p><a href="http://channel9.msdn.com/Events/TechEd/Australia/2013?sort=sequential&direction=desc&term=security&s=Andy-Prow#theSessions">Videos on channel9</a></p>
-            </div>
-            
-			<div data-ng-show="pageNumber == 2">Page 2</div>
-			<div data-ng-show="pageNumber == 3">Page 3</div>
-			<div data-ng-show="pageNumber == 4">Page 4</div>
+					<div data-ng-show="pageNumber == 18">
+						<h2>Hack-Ed sessions</h2>
+						<h3>SQL Injection</h3>
+						<p><img src="Capture.PNG" /></p>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 19">
+						<h2>Hack-Ed sessions</h2>
+						<h3>SQL Injection</h3>
+						<p>ORMs pretty safe</p>
+						<p>Careful with search/sorting</p>
+						<p>Stored proc not always safe</p>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 20">
+						<h2>Hack-Ed sessions</h2>
+						<h3>CSRF (Cross-Site Request Forgery)</h3>
+						<p>Trick user into doing something the application let's them do normally anyway</p>
+					</div>
 
-			<span data-ng-click="previous()">Previous</span>
-			<span data-ng-click="next()">Next</span>
+					<div data-ng-show="pageNumber == 21">
+						<h2>Intermission</h2>
+					</div>
+		            
+					<div data-ng-show="pageNumber == 22">
+						<h2>Angular JS</h2>
+						<p><a href="http://angularjsdemo.azurewebsites.net/" target="_blank">http://angularjsdemo.azurewebsites.net/</a></p>
+						<p><a href="http://glennstovall.com/blog/2013/06/27/angularjs-an-overview/" target="_blank">Another good resource</a></p>
+					</div>
+
+					<div id="navigation" style="margin-top: 20px;">
+						<a class="button small" data-ng-click="previous()">Previous</a>
+						<a style="float: right;" class="button small" data-ng-click="next()">Next</a>
+						<span style="margin: 0 auto; display: block; text-align: center;">{{pageNumber}}</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
